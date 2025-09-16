@@ -1,0 +1,16 @@
+{
+  "name": "discord-hooks",
+  "version": "1.0.0",
+  "description": "Discord webhook integrations: quotes, weather, game deals, and more. Runs via GitHub Actions or Node.js.",
+  "type": "module",
+  "main": "src/daily-quote.js",
+  "scripts": {
+    "quote": "node ./.github/workflows/daily-quote.yml"
+  },
+  "keywords": ["discord", "webhooks", "automation", "api"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
