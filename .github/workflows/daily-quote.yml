@@ -27,6 +27,12 @@ jobs:
         env:
           CONSERVATORY_DISCORD_WEBHOOK: ${{ secrets.CONSERVATORY_DISCORD_WEBHOOK }}
 
+      - name: Upload logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: quote-bot-logs
+          path: quote-bot.log
+
 ## How schedule works
 #     ┌───────────── minute (0 - 59)
 # │ ┌───────────── hour (0 - 23)

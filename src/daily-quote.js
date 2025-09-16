@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import fs from "fs";
 
 // load env vars
 const WEBHOOK_URL = process.env.CONSERVATORY_DISCORD_WEBHOOK;
@@ -19,38 +20,38 @@ async function getQuote() {
   return `${data[0].q} —${data[0].a}`;
 }
 
-// sends the quote to discord by referencing the content of the json and calling the webhook
+// sends the quote to discord
 async function sendToDiscord(message) {
-  quoteBotResponse = JSON.stringify(JSON.parse(message).concat(JSON.parse(payload)));
   await fetch(WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ content: `${quoteBotResponse}` }),
+    body: JSON.stringify({
+      ...payload,
+      content: message
+    }),
   });
 }
 
-// fetches and sets the avatar image and bio of the bot
+// helper to append log lines
+function logToFile(message) {
+  const timestamp = new Date().toISOString();
+  fs.appendFileSync(LOG_FILE, `[${timestamp}] ${message}\n`);
+}
+
+// SET AVATAR / USERNAME once
 await fetch(WEBHOOK_URL, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(payload)
 });
 
-// helper to append log lines
-function logToFile(message) {
-  fs.appendFileSync(LOG_FILE, `[${timestamp}] ${message}\n`);
-}
-
-// MAKES CALL
-// ----------
-// makes call to fetch quote, send to user, and logs result
+// MAIN
 (async () => {
   try {
     const quote = await getQuote();
     await sendToDiscord(quote);
-    logToFile(`Time - QUOTE: ${quote}`);
+    logToFile(`QUOTE SENT: ${quote}`);
   } catch (err) {
-    const timestamp = new Date().toISOString();
-    logToFile(`Time - ERROR ${timestamp}: ${err}`);
+    logToFile(`ERROR: ${err}`);
   }
 })();
