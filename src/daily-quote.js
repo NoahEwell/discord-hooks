@@ -18,10 +18,11 @@ async function getQuote() {
 
 // sends the quote to discord by referencing the content of the json and calling the webhook
 async function sendToDiscord(message) {
+  quoteBotResponse = JSON.stringify(JSON.parse(message).concat(JSON.parse(payload)));
   await fetch(WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ content: `${message}` }),
+    body: JSON.stringify({ content: `${quoteBotResponse}` }),
   });
 }
 
