@@ -5,19 +5,4 @@ Anyone else wanting to use this should add their webhook as an environment varia
 Repo → Settings → Secrets and variables → Actions → New repository secret.
 
 ## Structure
-discord-hooks/               # repo root
-│
-├── package.json             # one shared package.json (all deps here)
-├── .github/
-│   └── workflows/
-│       └── daily-quote.yml  # GitHub Actions workflow
-│
-├── src/                     # source scripts
-│   ├── daily-quote.js
-│   ├── weather-alert.js
-│   ├── game-deals.js
-│   └── ...
-│
-└── utils/                   # optional shared helpers
-    ├── discord.js           # sendToDiscord() function
-    └── api.js               # fetch helper, retries, etc.
+<img width="505" height="355" alt="image" src="https://github.com/user-attachments/assets/9f61168c-df10-4fdd-b813-78d7c9ed1ea9" />
