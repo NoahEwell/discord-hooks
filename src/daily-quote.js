@@ -3,6 +3,12 @@ import fetch from "node-fetch";
 // load env vars
 const WEBHOOK_URL = process.env.CONSERVATORY_DISCORD_WEBHOOK;
 
+// define local vars
+const payload = {
+  avatar_url: "https://m.media-amazon.com/images/I/61Qe9gpgCJL._UF894,1000_QL80_.jpg",
+  content: "Built by Exact Noah"
+};
+
 // gets the quote from the API which returns json
 async function getQuote() {
   const res = await fetch("https://zenquotes.io/api/random");
@@ -18,6 +24,13 @@ async function sendToDiscord(message) {
     body: JSON.stringify({ content: `${message}` }),
   });
 }
+
+// fetches and sets the avatar image and bio of the bot
+await fetch(WEBHOOK_URL, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(payload)
+});
 
 // makes call to fetch quote, send to user, and logs result
 (async () => {
