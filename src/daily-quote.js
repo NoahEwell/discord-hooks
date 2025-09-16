@@ -5,8 +5,8 @@ const WEBHOOK_URL = process.env.CONSERVATORY_DISCORD_WEBHOOK;
 
 // define local vars
 const payload = {
-  avatar_url: "https://m.media-amazon.com/images/I/61Qe9gpgCJL._UF894,1000_QL80_.jpg",
-  content: "Built by Exact Noah"
+  username: "Nook Bot:tm:",
+  avatar_url: "https://noahsnook.me/assets/images/sirMittonsTheGray.png"
 };
 
 // gets the quote from the API which returns json
