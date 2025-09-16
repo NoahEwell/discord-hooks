@@ -4,6 +4,9 @@ import fetch from "node-fetch";
 const WEBHOOK_URL = process.env.CONSERVATORY_DISCORD_WEBHOOK;
 
 // define local vars
+const LOG_FILE = "quote-bot.log";
+
+// define local var-functions
 const payload = {
   username: "Nook Bot:tm:",
   avatar_url: "https://noahsnook.me/assets/images/sirMittonsTheGray.png"
@@ -33,13 +36,21 @@ await fetch(WEBHOOK_URL, {
   body: JSON.stringify(payload)
 });
 
+// helper to append log lines
+function logToFile(message) {
+  fs.appendFileSync(LOG_FILE, `[${timestamp}] ${message}\n`);
+}
+
+// MAKES CALL
+// ----------
 // makes call to fetch quote, send to user, and logs result
 (async () => {
   try {
     const quote = await getQuote();
     await sendToDiscord(quote);
-    console.log("Quote sent:", quote);
+    logToFile(`Time - QUOTE: ${quote}`);
   } catch (err) {
-    console.error("Error:", err);
+    const timestamp = new Date().toISOString();
+    logToFile(`Time - ERROR ${timestamp}: ${err}`);
   }
 })();
