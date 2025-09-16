@@ -5,9 +5,10 @@ const WEBHOOK_URL = process.env.CONSERVATORY_DISCORD_WEBHOOK;
 
 // gets the quote from the API which returns json
 async function getQuote() {
-const res = await fetch("https://zenquotes.io/api/random");
-const data = await res.json();
-return `${data[0].q} — ${data[0].a}`;
+  const res = await fetch("https://zenquotes.io/api/random");
+  const data = await res.json();
+  return `${data[0].q} —${data[0].a}`;
+}
 
 // sends the quote to discord by referencing the content of the json and calling the webhook
 async function sendToDiscord(message) {
