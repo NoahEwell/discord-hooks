@@ -28,7 +28,7 @@ jobs:
           CONSERVATORY_DISCORD_WEBHOOK: ${{ secrets.CONSERVATORY_DISCORD_WEBHOOK }}
 
       - name: Upload logs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: quote-bot-logs
           path: quote-bot.log
