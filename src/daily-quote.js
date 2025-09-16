@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
 // load env vars
-const WEBHOOK_URL = process.env.DISCORD_WEBHOOK;
+const WEBHOOK_URL = process.env.CONSERVATORY_DISCORD_WEBHOOK;
 
 // gets the quote from the API which returns json
 async function getQuote() {
