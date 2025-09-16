@@ -5,7 +5,7 @@
   "type": "module",
   "main": "src/daily-quote.js",
   "scripts": {
-    "quote": "node ./.github/workflows/daily-quote.yml"
+    "quote": "node src/dailyquote.js"
   },
   "keywords": ["discord", "webhooks", "automation", "api"],
   "author": "",
