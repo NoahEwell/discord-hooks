@@ -10,7 +10,7 @@ const LOG_FILE = "quote-bot.log";
 // define local var-functions
 const payload = {
   username: "Nook-Bot",
-  avatar_url: "https://noahsnook.me/assets/images/dogWithCatInMouth.png"
+  avatar_url: "https://noahsnook.me/assets/images/N-logo.ico"
 };
 
 // gets the quote from the API which returns json
