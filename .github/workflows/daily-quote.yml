@@ -1,4 +1,4 @@
-name: Daily Quote to Discord
+name: Run All Discord Bots
 
 on:
   push:
@@ -8,30 +8,38 @@ on:
   workflow_dispatch:
 
 jobs:
-  send-quote:
+  run-bots:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run script and passes webhook(s)
-        run: npm run quote
+      - name: Run Conservatory Bot
+        run: npm run conservatory
         env:
           CONSERVATORY_DISCORD_WEBHOOK: ${{ secrets.CONSERVATORY_DISCORD_WEBHOOK }}
+
+      - name: Run SUAGTFO Bot
+        run: npm run suagtfo
+        env:
+          SUAGTFO_DISCORD_WEBHOOK: ${{ secrets.SUAGTFO_DISCORD_WEBHOOK }}
 
       - name: Upload logs
         uses: actions/upload-artifact@v4
         with:
-          name: quote-bot-logs
-          path: quote-bot.log
+          name: all-bot-logs
+          path: |
+            conservatory-quote-bot.log
+            suagtfo-quote-bot.log
 
 ## How schedule works
 #     ┌───────────── minute (0 - 59)
