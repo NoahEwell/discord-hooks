@@ -2,7 +2,7 @@ export class DiscordBot {
   /**
    * @param {object} opts
    * @param {DiscordClient} opts.client
-   * @param {() => Promise<string>} opts.produceMessage  async fn -> message
+   * @param {() => Promise<string>} opts.produceMessage - Async function that produces the message to send
    * @param {Logger} opts.logger
    * @param {boolean} [opts.setIdentityOnStart]
    */
