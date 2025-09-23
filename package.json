@@ -1,12 +1,13 @@
 {
   "name": "discord-hooks",
   "version": "1.0.0",
-  "description": "Discord webhook integrations: quotes, weather, game deals, and more. Runs via GitHub Actions or Node.js.",
+  "description": "Discord webhook integrations (quotes). Runs via GitHub Actions or Node.js.",
   "type": "module",
-  "main": "src/daily-quote.js",
-"scripts": {
-  "quote": "node src/daily-quote.js"
-},
+  "main": "bin/run-bot.js",
+  "scripts": {
+    "conservatory": "node bin/run-bot.js conservatory",
+    "suagtfo": "node bin/run-bot.js suagtfo"
+  },
   "keywords": ["discord", "webhooks", "automation", "api"],
   "author": "",
   "license": "ISC",
