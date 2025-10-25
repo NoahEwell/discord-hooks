@@ -1,11 +1,11 @@
 name: Run All Discord Bots
 
-on:
-  push:
-    branches: [ main ]
-  schedule:
-    - cron: "0 15 * * *"
-  workflow_dispatch:
+# on:
+#   push:
+#     branches: [ main ]
+#   schedule:
+#     - cron: "0 15 * * *"
+#   workflow_dispatch:
 
 jobs:
   run-bots:
