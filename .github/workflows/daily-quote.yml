@@ -29,10 +29,10 @@ jobs:
         env:
           VIRTUAL_VOID_DISCORD_WEBHOOK: ${{ secrets.VIRTUAL_VOID_DISCORD_WEBHOOK }}
 
-      - name: Run Comic Chaos Bot
-        run: npm run cs4760
-        env:
-          CS4760_DISCORD_WEBHOOK: ${{ secrets.CS4760_DISCORD_WEBHOOK }}
+      # - name: Run Comic Chaos Bot
+      #   run: npm run cs4760
+      #   env:
+      #     CS4760_DISCORD_WEBHOOK: ${{ secrets.CS4760_DISCORD_WEBHOOK }}
         
       # - name: Run Conservatory Bot
       #   run: npm run conservatory
