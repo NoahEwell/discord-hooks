@@ -71,11 +71,12 @@ export async function produceComicChaos() {
     comicRandom.alt
   ];
 
-  for (const field of fieldsToCheck) {
-    if (containsProfanity(field)) {
-      return "***Profanity detected, excluding today's comic. Have a nice day! -Noah***";
-    }
-  }
+  // PROFANITY TOGGLE:
+  // for (const field of fieldsToCheck) {
+  //   if (containsProfanity(field)) {
+  //     return "***Profanity detected, excluding today's comic. Have a nice day! -Noah***";
+  //   }
+  // }
 
   // Format: Title, alt text, and link to the comic
   return `# ${comicRandom.safe_title}\n-# (Num: ${comicRandom.num})\n"${comicRandom.alt}"\n[Image Link](${comicRandom.img})`;
